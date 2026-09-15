@@ -164,9 +164,21 @@ button{appearance:none;-webkit-appearance:none}
 .poster>.word,.poster>.pill,.poster>.star,.poster>.retro-object,.poster>.note,.poster>.mouse-note,.poster>.scribble{transition:opacity .22s ease,visibility .22s ease}
 .poster.detail-open>.word,.poster.detail-open>.pill,.poster.detail-open>.star,.poster.detail-open>.retro-object,.poster.detail-open>.note,.poster.detail-open>.mouse-note,.poster.detail-open>.scribble{opacity:0;visibility:hidden;pointer-events:none}
 .back{width:auto;min-width:64px;height:22px;padding:0 8px;line-height:17px;white-space:nowrap;font:700 10px 'Courier New','PingFang SC',monospace}
+.pixel-stage{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none;opacity:0;transition:opacity .32s ease}
+.poster.detail-open .pixel-stage{opacity:1}
+.theme-mark{position:absolute;left:4%;top:50%;z-index:4;width:24%;transform:translateY(-50%);pointer-events:none;opacity:0;color:#1649b7;transition:opacity .32s ease,transform .42s cubic-bezier(.2,.8,.2,1)}
+.poster.detail-open .theme-mark{opacity:1;transform:translateY(-50%) translateX(0)}
+.theme-number{display:block;font:700 11px 'Courier New',monospace;letter-spacing:3px;margin-bottom:12px}
+.theme-en{display:block;font:900 clamp(27px,3.5vw,67px)/.86 Arial,'PingFang SC',sans-serif;letter-spacing:-3px;overflow-wrap:anywhere;text-transform:uppercase}
+.theme-cn{display:inline-block;margin-top:15px;padding:6px 10px;border:2px solid #2457c3;background:#f5f8ff;box-shadow:4px 4px 0 #8db5f1;font:700 12px 'Courier New','PingFang SC',monospace;letter-spacing:1px}
+.theme-prompt{display:block;margin-top:14px;font:10px/1.6 'Courier New','PingFang SC',monospace;color:#5777ab;letter-spacing:.8px}
 @media(prefers-reduced-motion:reduce){.poster>.word,.poster>.pill,.poster>.star,.poster>.retro-object,.poster>.note,.poster>.mouse-note,.poster>.scribble{transition:none}}
+@media(max-width:1150px){.theme-mark{left:3%;width:19%}.theme-en{font-size:clamp(20px,3vw,36px);letter-spacing:-1px}.theme-cn{font-size:9px;padding:4px 6px}.theme-prompt{display:none}}
+@media(max-width:760px){.theme-mark{left:5%;top:84px;width:auto;max-width:62%;transform:none}.poster.detail-open .theme-mark{transform:none}.theme-number{font-size:8px;margin-bottom:5px}.theme-en{font-size:18px;line-height:1;letter-spacing:-.5px}.theme-cn{font-size:8px;margin-top:7px;padding:3px 5px;box-shadow:2px 2px 0 #8db5f1}}
 </style></head><body><main class="poster">
 <header class="topline"><span class="brand">O / Z™</span><span>PERSONAL COMPUTER · INTERACTIVE RESUME</span><span class="edition"><span class="edition-label">RESUME / 张城宇</span><button id="sound-toggle" type="button" aria-pressed="true" aria-label="关闭点击音效"><span data-sound-label>SOUND ON</span></button></span></header>
+<canvas class="pixel-stage" id="pixel-stage" aria-hidden="true"></canvas>
+<aside class="theme-mark" id="theme-mark" aria-hidden="true"><span class="theme-number" id="theme-number">01 / RESUME FILE</span><strong class="theme-en" id="theme-en">ABOUT</strong><span class="theme-cn" id="theme-cn">关于我</span><small class="theme-prompt">PIXELS FALL.<br>IDEAS TAKE SHAPE.</small></aside>
 <svg class="scribble" viewBox="0 0 1920 1080" preserveAspectRatio="none" aria-hidden="true"><g fill="none" stroke="#282820" stroke-width="2.3" stroke-linecap="round"><path d="M20 350C-10 140 170 10 236 89S227 287 295 268 315 21 410 58 423 248 495 214 511 19 600 67 602 267 700 201 718 33 807 82 849 245 900 169"/><path d="M1170 189C1130 14 1290 54 1340 150S1320 285 1395 232 1450 7 1580 65 1630 242 1750 170 1940 179 1890 360"/><path d="M100 553C-40 680 254 540 179 697S60 939 275 944C449 948 387 846 311 866S310 1044 564 1007"/><path d="M1704 454C1844 374 1830 591 1710 650S1810 694 1860 791 1740 943 1652 925 1606 1039 1830 1005"/><path d="M391 717Q560 765 493 898M1505 780Q1350 924 1450 962"/></g><g fill="#25251f"><path d="M483 879l9 22 16-19-14 7z"/><path d="M1677 452l28-3-13 19 3-14z"/></g></svg>
 <button data-bounce class="word w1" data-open="about">HELLO,<br>ORION.<small>张城宇 / 一个保持好奇的设计者</small></button>
 <button data-bounce class="word w2" data-open="fit">AI AGENT<br><span class="outline">× DESIGN</span><small>AI AGENT / AIGC / INTERACTION</small></button>
@@ -200,8 +212,8 @@ const pages=[
 const drawings={person:'<path d="M12 3h10v3h3v9h-3v3H12v-3H9V6h3zM7 22h20v8H7z"/><path fill="#e9d7ad" d="M12 7h10v7H12z"/>',book:'<path d="M3 5h12l3 3 3-3h12v23H21l-3 3-3-3H3z"/><path fill="#d6eaff" d="M6 8h9v17H6zm15 0h9v17h-9z"/>',tools:'<path d="M5 11h26v19H5zM12 5h12v6h-3V8h-6v3h-3z"/><path fill="#91bbee" d="M8 14h20v5H8zm8 3h5v7h-5z"/>',trophy:'<path d="M9 3h18v14h-3v4h-4v6h7v3H9v-3h7v-6h-4v-4H9zM3 6h6v3H6v6h6v3H6v-3H3zm24 0h6v9h-3v3h-6v-3h6V9h-3z"/><path fill="#e8d477" d="M12 6h12v10H12z"/>',target:'<path d="M9 3h18v3h3v3h3v15h-3v3h-3v3H9v-3H6v-3H3V9h3V6h3z"/><path fill="#c4def7" d="M9 9h18v15H9z"/><path d="M15 12h6v9h-6z"/>',flag:'<path d="M7 3h3v27H7zM10 4h21v14H10zM3 28h14v3H3z"/><path fill="#80b2f0" d="M13 7h15v8H13z"/>',mail:'<path d="M3 7h30v22H3z"/><path fill="#e9f3ff" d="M6 10h24v16H6z"/><path d="M6 10h3v3h3v3h3v3h6v-3h3v-3h3v-3h3v3h-3v3h-3v3h-3v3h-6v-3h-3v-3H9v-3H6z"/>'};
 const $=s=>document.querySelector(s);let current=-1,visited=new Set(),lastTrigger=null;const win=$('#window');
 $('#icons').innerHTML=pages.map(p=>`<button class="icon" data-open="${p.id}" aria-label="${p.en} ${p.cn}"><svg viewBox="0 0 36 34" fill="#123b87" aria-hidden="true">${drawings[p.kind]}</svg><span>${p.en}<br>${p.cn}</span></button>`).join('');
-function openPage(id,trigger){const i=pages.findIndex(p=>p.id===id);if(i<0)return;current=i;if(trigger)lastTrigger=trigger;const p=pages[i];$('#sleep').hidden=true;$('#windowtitle').textContent=p.en+' — '+p.cn;$('#content').innerHTML=p.html;$('#content').scrollTop=0;$('#pagecount').textContent=`FILE ${i+1} / 7`;win.hidden=false;$('.poster').classList.add('detail-open');visited.add(id);document.querySelectorAll('.icon').forEach(b=>b.classList.toggle('visited',visited.has(b.dataset.open)));$('#progress').textContent=`EXPLORED ${visited.size} / 7`;$('#hint').textContent=visited.size===7?'全部探索完成！很高兴认识你。':'已发现：'+p.cn;$('#content').focus({preventScroll:true})}
-function home(){clearTimeout(toastTimer);$('#toast').textContent='';win.hidden=true;$('#sleep').hidden=true;$('.poster').classList.remove('detail-open');if(lastTrigger)lastTrigger.focus({preventScroll:true})}
+function openPage(id,trigger){const i=pages.findIndex(p=>p.id===id);if(i<0)return;current=i;if(trigger)lastTrigger=trigger;const p=pages[i];$('#sleep').hidden=true;$('#windowtitle').textContent=p.en+' — '+p.cn;$('#content').innerHTML=p.html;$('#content').scrollTop=0;$('#pagecount').textContent=`FILE ${i+1} / 7`;win.hidden=false;$('.poster').classList.add('detail-open');window.pixelBackdrop?.show(p,i);visited.add(id);document.querySelectorAll('.icon').forEach(b=>b.classList.toggle('visited',visited.has(b.dataset.open)));$('#progress').textContent=`EXPLORED ${visited.size} / 7`;$('#hint').textContent=visited.size===7?'全部探索完成！很高兴认识你。':'已发现：'+p.cn;$('#content').focus({preventScroll:true})}
+function home(){clearTimeout(toastTimer);$('#toast').textContent='';win.hidden=true;$('#sleep').hidden=true;$('.poster').classList.remove('detail-open');window.pixelBackdrop?.hide();if(lastTrigger)lastTrigger.focus({preventScroll:true})}
 document.addEventListener('click',async e=>{const b=e.target.closest('[data-open]');if(b)openPage(b.dataset.open,b);const c=e.target.closest('[data-copy]');if(c){try{if(navigator.clipboard&&window.isSecureContext)await navigator.clipboard.writeText(c.dataset.copy);else{const t=document.createElement('textarea');t.value=c.dataset.copy;t.style.position='fixed';t.style.opacity='0';document.body.append(t);t.select();const ok=document.execCommand('copy');t.remove();if(!ok)throw Error('copy')}toast('已复制到剪贴板 ✓')}catch{toast('复制未成功，请选中联系方式手动复制')}}});
 $('#close').onclick=home;$('#home').onclick=home;$('#explore').onclick=home;$('#prev').onclick=()=>openPage(pages[(current+6)%7].id);$('#next').onclick=()=>openPage(pages[(current+1)%7].id);document.addEventListener('keydown',e=>{if(e.key==='Escape')home()});$('#power').onclick=()=>{$('#sleep').hidden=!$('#sleep').hidden;if(!$('#sleep').hidden)$('#wake').focus()};$('#wake').onclick=()=>{$('#sleep').hidden=true;$('#home').focus()};let toastTimer;function toast(s){$('#toast').textContent=s;clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('#toast').textContent='',2400)}function tick(){$('#clock').textContent=new Date().toLocaleTimeString('zh-CN',{hour:'2-digit',minute:'2-digit',hour12:false})}tick();setInterval(tick,30000);
 </script><script>
@@ -408,4 +420,121 @@ $('#close').onclick=home;$('#home').onclick=home;$('#explore').onclick=home;$('#
   else initializeEffects();
 })();
 
+</script><script>
+/* Section-specific pixel backdrop: a calm, blue Tetris-like field behind the CRT. */
+(() => {
+  'use strict';
+  const canvas = document.getElementById('pixel-stage');
+  const ctx = canvas.getContext('2d');
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const tetrominoes = [
+    [[0,0],[1,0],[2,0],[3,0]], [[0,0],[1,0],[0,1],[1,1]],
+    [[1,0],[0,1],[1,1],[2,1]], [[0,0],[0,1],[1,1],[2,1]],
+    [[2,0],[0,1],[1,1],[2,1]], [[1,0],[2,0],[0,1],[1,1]],
+    [[0,0],[1,0],[1,1],[2,1]]
+  ];
+  const motifs = {
+    about:['01110','10001','10101','10001','01110','00100','01110'],
+    education:['10001','11011','10101','10101','11011','10001'],
+    skills:['10001','01010','00100','01110','10101','10101'],
+    projects:['11111','10101','01110','00100','01110','11111'],
+    fit:['01110','10001','10101','10001','01110'],
+    objective:['10000','11110','10110','11110','10000','10000'],
+    contact:['11111','10001','01010','00100','11111']
+  };
+  const accents = {
+    about:'#9bc5ff',education:'#72a5ef',skills:'#b2d5ff',projects:'#efcddd',
+    fit:'#7eb9f5',objective:'#b6cdf5',contact:'#90b8ef'
+  };
+  let active = false, pieces = [], frame = 0, last = 0, theme = 'about';
+
+  function resize() {
+    const ratio = Math.min(window.devicePixelRatio || 1, 2);
+    const box = canvas.getBoundingClientRect();
+    canvas.width = Math.max(1, Math.round(box.width * ratio));
+    canvas.height = Math.max(1, Math.round(box.height * ratio));
+    ctx.setTransform(ratio,0,0,ratio,0,0);
+    if (active && reducedMotion.matches) draw(0);
+  }
+
+  function makePiece(i, initial = false) {
+    const mobile = innerWidth < 761;
+    const size = mobile ? 7 + (i % 3) * 2 : 10 + (i % 4) * 3;
+    const edgeBias = i % 2 === 0;
+    return {
+      shape: tetrominoes[i % tetrominoes.length], size,
+      x: edgeBias ? Math.random() * innerWidth * .3 : innerWidth * .7 + Math.random() * innerWidth * .3,
+      y: initial ? Math.random() * innerHeight : -80 - Math.random() * innerHeight * .55,
+      speed: 22 + (i % 6) * 7, alpha: .22 + (i % 4) * .08,
+      color: i % 3 === 0 ? accents[theme] : (i % 3 === 1 ? '#ffffff' : '#2f66cd')
+    };
+  }
+
+  function resetPieces() {
+    const count = innerWidth < 761 ? 16 : 30;
+    pieces = Array.from({length:count},(_,i)=>makePiece(i,true));
+  }
+
+  function block(x,y,size,color,alpha=1) {
+    ctx.globalAlpha = alpha;
+    ctx.fillStyle = color;
+    ctx.fillRect(Math.round(x),Math.round(y),Math.ceil(size),Math.ceil(size));
+    ctx.globalAlpha = 1;
+  }
+
+  function drawMotif(pattern,x,y,size,color,alpha) {
+    pattern.forEach((row,ry)=>[...row].forEach((cell,rx)=>{if(cell==='1')block(x+rx*size,y+ry*size,size-1,color,alpha)}));
+  }
+
+  function draw(dt) {
+    const w = canvas.clientWidth, h = canvas.clientHeight;
+    ctx.clearRect(0,0,w,h);
+    const wash = ctx.createLinearGradient(0,0,0,h);
+    wash.addColorStop(0,'rgba(72,126,223,.20)');
+    wash.addColorStop(.58,'rgba(201,222,252,.14)');
+    wash.addColorStop(1,'rgba(255,255,255,.35)');
+    ctx.fillStyle = wash; ctx.fillRect(0,0,w,h);
+
+    const pixel = innerWidth < 761 ? 7 : 11;
+    const pattern = motifs[theme] || motifs.about;
+    drawMotif(pattern,w*.04,h*.20,pixel*2.15,'#ffffff',.42);
+    drawMotif(pattern,w-pattern[0].length*pixel*1.65-w*.035,h*.60,pixel*1.65,accents[theme],.42);
+
+    for(let i=0;i<42;i++) {
+      const x=(i*83+(theme.length*31))%w, y=(i*i*29+73)%h;
+      block(x,y,i%5===0?4:2,i%4===0?'#fff':'#4c7fdb',i%3===0?.5:.28);
+    }
+    pieces.forEach((piece,i)=>{
+      if(dt && !reducedMotion.matches) piece.y += piece.speed*dt;
+      piece.shape.forEach(([x,y])=>block(piece.x+x*piece.size,piece.y+y*piece.size,piece.size-1,piece.color,piece.alpha));
+      if(piece.y>h+80) pieces[i]=makePiece(i,false);
+    });
+  }
+
+  function animate(now) {
+    if(!active){frame=0;return}
+    const dt=Math.min((now-last)/1000,.04); last=now; draw(dt);
+    if(!reducedMotion.matches) frame=requestAnimationFrame(animate); else frame=0;
+  }
+
+  function show(page,index) {
+    theme=page.id;
+    document.getElementById('theme-number').textContent=String(index+1).padStart(2,'0')+' / RESUME FILE';
+    document.getElementById('theme-en').textContent=page.en;
+    document.getElementById('theme-cn').textContent=page.cn;
+    active=true; resize(); resetPieces(); draw(0);
+    if(frame)cancelAnimationFrame(frame);
+    if(!reducedMotion.matches){last=performance.now();frame=requestAnimationFrame(animate)}
+  }
+
+  function hide() {
+    active=false;if(frame)cancelAnimationFrame(frame);frame=0;ctx.clearRect(0,0,canvas.clientWidth,canvas.clientHeight);
+  }
+
+  addEventListener('resize',resize,{passive:true});
+  const motionChanged=()=>{if(active){if(frame)cancelAnimationFrame(frame);frame=0;draw(0);if(!reducedMotion.matches){last=performance.now();frame=requestAnimationFrame(animate)}}};
+  if(reducedMotion.addEventListener)reducedMotion.addEventListener('change',motionChanged);else reducedMotion.addListener(motionChanged);
+  resize();
+  window.pixelBackdrop={show,hide};
+})();
 </script></body></html>
