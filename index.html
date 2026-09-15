@@ -63,6 +63,102 @@ button:focus-visible,a:focus-visible{outline:3px solid #477ffa;outline-offset:4p
 .obj-disc{left:18%;bottom:26%}
 @media(max-width:1500px) and (min-width:1151px){.obj-disc{left:19%;bottom:27%}}
 @media(max-width:760px){.caption{font-size:0;letter-spacing:0}.caption:after{content:'ORION OS / PERSONAL RESUME';font:8px monospace;letter-spacing:1px}.w5,.w6{bottom:8%}}
+
+/* Final layout calibration: consistent CJK baselines and larger small-screen symbols. */
+button{appearance:none;-webkit-appearance:none}
+.word{font-family:Arial,'PingFang SC','Microsoft YaHei',sans-serif;text-wrap:balance}
+.word>span{display:inline-block;vertical-align:baseline;line-height:.84}
+.w2 .outline,.w4 .outline{translate:0 .025em}
+.icon{min-width:0;min-height:68px;justify-content:flex-start}
+.icon svg{flex:0 0 auto}
+.icon>span{display:block;width:100%;min-height:30px;text-align:center;line-height:1.25;white-space:nowrap}
+.welcome>div:last-child{min-width:0}
+.welcome h1,.welcome p,.eyebrow{transform:translateZ(0)}
+.menubar{line-height:1}.menubar button,.menubar time{display:inline-flex;align-items:center;height:100%}
+.status{line-height:1.2}.status>span{display:block}
+
+@media(max-width:1500px) and (min-width:761px){
+  .icon{min-height:61px}
+  .icon>span{font-size:10px;min-height:26px}
+  .welcome h1{line-height:1.12}
+}
+
+@media(max-width:760px){
+  .poster{min-height:820px}
+  .computer{width:min(96vw,430px);top:45.5%;transform:translate(-50%,-42%)}
+  .case{padding:14px 12px 9px;border-radius:19px 20px 24px 24px}
+  .bezel{padding:8px;border-radius:17px 17px 25px 25px}
+  .screen{height:444px;border-radius:9px 9px 18px 18px}
+  .menubar{height:30px;padding:0 9px;gap:12px;font-size:10px}
+  .desktop{height:calc(100% - 59px);padding:9px 9px 8px;overflow:hidden}
+  .welcome{padding:31px 9px 10px;gap:9px;min-height:113px;align-items:center}
+  .welcome:before{height:21px;padding:5px 7px;font-size:9px;line-height:11px}
+  .welcome:after{top:6px;right:7px}
+  .avatar{width:47px;height:55px;padding:3px}
+  .eyebrow{font-size:8px;line-height:1.15;letter-spacing:.45px;white-space:nowrap}
+  .welcome h1{font-size:21px;line-height:1.12;margin:6px 0 4px;letter-spacing:-.7px;white-space:nowrap}
+  .welcome p{font-size:9px;line-height:1.5;white-space:nowrap;letter-spacing:-.15px}
+  .icons{height:239px;margin-top:8px;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:repeat(3,1fr);gap:2px 2px;align-content:stretch}
+  .icon{min-height:0;height:100%;padding:5px 1px 2px;gap:4px;justify-content:flex-start;font-size:10px;line-height:1.15}
+  .icon svg{width:40px;height:36px}
+  .icon>span{min-height:25px;font-size:9.5px;line-height:1.2;letter-spacing:-.25px;white-space:nowrap}
+  .icon.visited:after{top:3px;right:17%;font-size:12px;line-height:14px;min-width:14px;height:14px}
+  .icon[data-open="contact"]{grid-column:2}
+  .status{height:29px;padding:0 10px;font-size:9px}
+  .chin{height:48px;padding:7px 12px 0}
+  .model{font-size:15px}.model small{font-size:7px;letter-spacing:1.5px}
+  .controls{gap:10px}.vents{width:55px}.power{width:29px;height:29px;padding:0}
+  .neck{height:36px}.base{height:24px}
+  .w1{left:5%;top:9.5%;max-width:46%;font-size:38px;line-height:.82;letter-spacing:-2px}
+  .w2{right:5%;top:10.3%;max-width:40%;font-size:31px;line-height:.84;letter-spacing:-1px}
+  .w5{left:6%;bottom:7%;font-size:28px;line-height:.88}
+  .w6{right:5%;bottom:7%;font-size:28px;line-height:.86}
+  .bottomline{left:4%;right:4%;bottom:12px;padding-top:9px;line-height:1.2}
+  .bottomline>span:nth-child(2){display:none}
+}
+
+@media(max-width:360px){
+  .screen{height:440px}
+  .computer{width:97vw;top:45%}
+  .icons{height:237px}
+  .welcome h1{font-size:19px}.welcome p{font-size:8.3px}.eyebrow{font-size:7.3px}
+  .icon svg{width:37px;height:33px}.icon>span{font-size:8.8px}
+  .w1{font-size:34px}.w2{font-size:28px}.w5,.w6{font-size:25px}
+}
+
+@media(min-width:761px) and (max-width:900px){
+  .poster{min-height:900px}
+  .computer{width:76vw;max-width:620px;top:50%;transform:translate(-50%,-45%)}
+  .case{padding:25px 24px 13px}
+  .bezel{padding:12px}
+  .screen{height:410px}
+  .desktop{padding:13px}
+  .welcome{padding:37px 14px 14px;gap:13px}
+  .welcome h1{font-size:24px;line-height:1.12;white-space:nowrap}
+  .welcome p{font-size:10px;line-height:1.55;white-space:nowrap}
+  .eyebrow{font-size:8.5px;white-space:nowrap}
+  .avatar{width:57px;height:62px;padding:4px}
+  .icons{margin-top:12px;gap:6px 2px}
+  .icon{min-height:58px;padding:3px 0;gap:3px}
+  .icon svg{width:38px;height:33px}
+  .icon>span{font-size:9px;line-height:1.18;min-height:22px;white-space:nowrap}
+  .status{font-size:9px}
+  .caption{margin-top:11px}
+}
+
+@media(min-width:901px) and (max-height:820px){
+  .poster{min-height:740px}
+  .computer{top:49%;transform:translate(-50%,-47%)}
+  .screen{height:400px}
+  .welcome{padding-top:36px;padding-bottom:12px}
+  .welcome h1{font-size:24px}
+  .icons{margin-top:12px;gap:7px 5px}
+  .icon{min-height:55px;padding:3px 0;gap:3px}
+  .icon svg{width:38px;height:32px}
+  .caption{display:none}
+}
+
+@media(min-width:1700px){.icons{margin-top:22px}}
 </style></head><body><main class="poster">
 <header class="topline"><span class="brand">O / Z™</span><span>PERSONAL COMPUTER · INTERACTIVE RESUME</span><span class="edition"><span class="edition-label">RESUME / 张城宇</span><button id="sound-toggle" type="button" aria-pressed="true" aria-label="关闭点击音效"><span data-sound-label>SOUND ON</span></button></span></header>
 <svg class="scribble" viewBox="0 0 1920 1080" preserveAspectRatio="none" aria-hidden="true"><g fill="none" stroke="#282820" stroke-width="2.3" stroke-linecap="round"><path d="M20 350C-10 140 170 10 236 89S227 287 295 268 315 21 410 58 423 248 495 214 511 19 600 67 602 267 700 201 718 33 807 82 849 245 900 169"/><path d="M1170 189C1130 14 1290 54 1340 150S1320 285 1395 232 1450 7 1580 65 1630 242 1750 170 1940 179 1890 360"/><path d="M100 553C-40 680 254 540 179 697S60 939 275 944C449 948 387 846 311 866S310 1044 564 1007"/><path d="M1704 454C1844 374 1830 591 1710 650S1810 694 1860 791 1740 943 1652 925 1606 1039 1830 1005"/><path d="M391 717Q560 765 493 898M1505 780Q1350 924 1450 962"/></g><g fill="#25251f"><path d="M483 879l9 22 16-19-14 7z"/><path d="M1677 452l28-3-13 19 3-14z"/></g></svg>
