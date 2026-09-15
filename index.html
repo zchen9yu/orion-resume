@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Orion Zhang — Interactive Resume</title><style>
+:root{--ink:#20201c;--paper:#f6f5ef;--lime:#d9f85b;--blue:#254dee}*{box-sizing:border-box}body{margin:0;color:var(--ink);background:var(--paper);font-family:Arial,'PingFang SC','Microsoft YaHei',sans-serif}button,a{-webkit-tap-highlight-color:transparent}button{font:inherit;color:inherit;cursor:pointer}button:focus-visible,a:focus-visible{outline:3px solid #e64c94;outline-offset:4px}button:hover{filter:brightness(.96)}.poster{height:100svh;min-height:800px;position:relative;overflow:hidden;max-width:2400px;margin:auto;background-image:radial-gradient(#24231a17 .7px,transparent .7px);background-size:5px 5px}.topline,.bottomline{position:absolute;left:3.3%;right:3.3%;display:flex;justify-content:space-between;align-items:center;font:11px 'Courier New',monospace;letter-spacing:1.3px;z-index:3}.topline{top:27px}.bottomline{bottom:23px;border-top:1px solid #2225;padding-top:14px}.brand{font-weight:bold;font-size:15px}.dot{display:inline-block;background:#222;width:7px;height:7px;border-radius:50%;margin-right:9px}.scribble{position:absolute;width:100%;height:100%;pointer-events:none}.word{position:absolute;border:0;background:none;padding:0;text-align:left;font-weight:900;line-height:.86;letter-spacing:-5px;z-index:2}.word small{display:block;font-size:13px;letter-spacing:2px;margin-top:16px;font-weight:400;line-height:1.4}.w1{left:5%;top:13%;font-size:clamp(70px,7.5vw,144px);transform:rotate(-7deg)}.w2{right:5%;top:12%;font-size:clamp(70px,7vw,130px);transform:rotate(6deg);font-family:Impact,'Arial Narrow',sans-serif}.w3{left:4%;top:42%;font-size:clamp(38px,4.4vw,84px);transform:rotate(-5deg)}.w3 span{font-family:Georgia,serif;font-style:italic;font-weight:400}.w4{right:4%;top:43%;font-size:clamp(36px,4vw,76px);transform:rotate(5deg)}.w5{left:6%;bottom:16%;font-size:clamp(40px,4.1vw,78px)}.w6{right:5%;bottom:15%;font-size:clamp(40px,4.6vw,88px);transform:rotate(-5deg)}.outline{-webkit-text-stroke:1.5px var(--ink);color:var(--paper)}.pill{background:var(--lime);border:2px solid #222;border-radius:50%;padding:17px 26px;font:900 23px Arial;letter-spacing:-1px;transform:rotate(-12deg);position:absolute;left:8%;top:33%;z-index:4;box-shadow:3px 4px 0 #222}.star{position:absolute;width:110px;height:110px;right:12%;top:31%;z-index:4;transform:rotate(12deg)}.note{position:absolute;left:20%;bottom:9%;font:italic 19px Georgia;transform:rotate(-9deg)}.computer{position:absolute;left:50%;top:50%;transform:translate(-50%,-46%);width:min(49vw,900px);z-index:5}.case{position:relative;background:linear-gradient(115deg,#f3efdf 0%,#e0dccb 53%,#c7c1ae 100%);padding:35px 35px 20px;border-radius:25px 27px 35px 35px;border:2px solid #b8b19d;box-shadow:inset 5px 5px 4px #fff9,inset -7px -7px 8px #827b6555,12px 19px 0 #2221,0 25px 35px #28241520}.bezel{background:#7c7b6d;padding:15px;border-radius:25px 25px 38px 38px;box-shadow:inset 7px 8px 9px #39392c,inset -5px -5px 5px #ffffe5,0 2px 0 #fff9}.screen{height:450px;border-radius:12px 12px 25px 25px;overflow:hidden;position:relative;background:#b9c3ae;border:3px solid #30362c;font-family:'Courier New','PingFang SC',monospace;font-size:13px;box-shadow:inset 0 0 30px #28352055}.screen:after{content:'';position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(transparent 0px,transparent 3px,#28352408 3px,#28352408 4px);z-index:10}.menubar{height:30px;background:#eaece0;border-bottom:2px solid #283023;display:flex;align-items:center;gap:17px;padding:0 12px;font-size:12px}.menubar button{border:0;background:none;font-weight:bold;padding:3px}.menubar time{margin-left:auto}.desktop{height:calc(100% - 58px);padding:16px;background-image:radial-gradient(#65795e66 .7px,transparent .7px);background-size:4px 4px;overflow:auto}.welcome{border:2px solid #2c3526;box-shadow:4px 4px 0 #596650;background:#e8ecde;padding:16px 18px;display:flex;gap:18px;align-items:center}.avatar{width:70px;height:70px;flex-shrink:0;image-rendering:pixelated}.eyebrow{font-size:10px;letter-spacing:1px}.welcome h1{font-size:28px;letter-spacing:-1.5px;margin:7px 0 5px}.welcome p{margin:0;font-size:12px;line-height:1.7}.icons{display:grid;grid-template-columns:repeat(4,1fr);gap:13px 5px;margin-top:20px}.icon{background:none;border:1px solid transparent;display:flex;align-items:center;flex-direction:column;gap:6px;padding:5px 0;font-size:11px;line-height:1.3;position:relative}.icon:hover,.icon:focus-visible{background:#e5e9d58c;border:1px dashed #35452e;filter:none}.icon svg{width:39px;height:34px;shape-rendering:crispEdges}.icon.visited:after{content:'✓';background:var(--lime);position:absolute;top:0;right:24%;font-size:11px}.status{height:28px;background:#e6e9db;border-top:2px solid #37402e;display:flex;align-items:center;justify-content:space-between;padding:0 12px;font-size:10px}.window{position:absolute;inset:43px 16px 40px;z-index:6;background:#eef0e5;border:2px solid #253020;box-shadow:5px 5px 0 #27312088;display:flex;flex-direction:column}.window[hidden]{display:none}.titlebar{background:#354830;color:#fff;height:30px;display:flex;align-items:center;justify-content:space-between;padding:0 7px 0 12px;font-weight:bold;font-size:12px;flex-shrink:0}.close{background:#e9ecdf;border:2px outset #fff;width:22px;height:22px;line-height:15px;color:#222;padding:0}.content{padding:19px 22px;overflow:auto;flex:1;line-height:1.8;scrollbar-color:#758566 #e4e8dc;scrollbar-width:thin}.content h2{font-size:23px;line-height:1.3;margin:0 0 12px;letter-spacing:-1px}.content h3{font-size:13px;margin:15px 0 4px}.content p{margin:8px 0}.content .sub{font-size:10px;letter-spacing:1px;color:#63715a;margin-bottom:7px}.tags{display:flex;flex-wrap:wrap;gap:7px;margin:12px 0}.tags span{border:1px solid #617056;background:#dde5ce;padding:3px 9px;font-size:12px}.row{border-bottom:1px dashed #89947e;padding:9px 0}.row b{display:block}.row small{color:#58644f;font-size:11px}.highlight{background:#d5e5ad;padding:12px;border-left:4px solid #526d36;margin-top:13px}.action{display:inline-block;background:#dce7c8;color:#24301e;border:2px outset #f8ffed;padding:7px 12px;text-decoration:none;font-size:12px}.windowfoot{padding:6px 12px;border-top:1px solid #9da58f;display:flex;justify-content:space-between;font-size:10px;align-items:center}.windowfoot button{background:none;border:0;padding:5px}.chin{height:56px;display:flex;align-items:center;justify-content:space-between;padding:8px 15px 0}.model{font:900 16px Georgia;color:#666251;letter-spacing:-.5px}.model small{font:8px monospace;letter-spacing:2px;display:block;margin-top:4px}.controls{display:flex;align-items:center;gap:14px}.led{background:#98c14a;width:6px;height:6px;border-radius:50%;box-shadow:0 0 3px #84a23e}.power{width:29px;height:29px;border:2px solid #a59f8c;border-radius:50%;box-shadow:inset 2px 2px 2px #ffffef,2px 2px 3px #aaa28d;background:#ddd7c4;font-size:17px}.vents{width:64px;height:15px;background:repeating-linear-gradient(90deg,#807e70 0,#807e70 2px,transparent 2px,transparent 5px)}.neck{width:32%;height:38px;margin:auto;background:linear-gradient(#857e6a,#d7d0b9);border:2px solid #aaa18b;border-top:0;transform:skew(-8deg)}.base{width:51%;height:28px;margin:-5px auto 0;background:linear-gradient(#eee8d6,#b5ac96);border:2px solid #ada48e;border-radius:50% 50% 18% 18%;box-shadow:9px 10px 12px #26241520}.sticker{position:absolute;right:-23px;bottom:79px;transform:rotate(12deg);background:#ef8fbb;border:5px solid #fff;padding:9px 13px;box-shadow:2px 3px 0 #222;font:900 15px Arial;line-height:1;z-index:7}.label{position:absolute;left:-19px;bottom:83px;transform:rotate(-9deg);background:var(--lime);border:4px solid white;padding:8px 11px;font:900 12px monospace;box-shadow:1px 2px 0 #444}.caption{text-align:center;font:11px monospace;margin-top:17px;letter-spacing:2px}.toast{position:absolute;bottom:39px;left:50%;transform:translateX(-50%);background:#273522;color:white;padding:8px 14px;z-index:20;font-size:11px;white-space:nowrap}.toast:empty{display:none}.sleep{position:absolute;inset:0;background:#253020;z-index:30;color:#deebca;display:grid;place-content:center;text-align:center}.sleep[hidden]{display:none}.sleep button{margin-top:20px}.contactrow{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:8px 0;border-bottom:1px dashed #909c84}.contactrow span{overflow-wrap:anywhere}.contactrow button{flex-shrink:0}.footerlink{color:inherit;text-decoration:none}.footerlink:hover{text-decoration:underline}@media(min-width:1700px){.screen{height:510px}.desktop{padding:22px}.welcome{padding:22px}.icons{margin-top:24px;gap:17px}.icon{font-size:13px}.icon svg{width:44px;height:38px}.screen{font-size:15px}.content{padding:25px 28px}.content h3{font-size:15px}.content .tags span{font-size:14px}.computer{top:51%}}@media(max-width:1150px){.computer{width:61vw}.w1,.w2{font-size:70px}.w3,.w4{font-size:40px}.w5,.w6{font-size:45px}.case{padding:25px 25px 12px}.screen{height:420px}.word{letter-spacing:-3px}.w3{left:2%}.w4{right:2%}.pill{left:3%;font-size:17px}.star{right:4%;width:80px}.note{left:10%}}@media(max-width:760px){.poster{min-height:900px;height:100svh}.topline{font-size:8px;top:19px}.topline .edition{display:none}.word{letter-spacing:-2px}.w1{top:9%;font-size:56px;left:5%}.w2{top:10%;font-size:49px;right:5%}.w1 small,.w2 small{font-size:8px}.computer{width:94%;top:49%;transform:translate(-50%,-43%)}.case{padding:15px 13px 8px;border-radius:20px}.bezel{padding:9px;border-radius:18px}.screen{height:435px}.desktop{padding:12px}.welcome{padding:13px 10px;gap:10px}.welcome h1{font-size:23px}.welcome p{font-size:10px}.avatar{width:50px;height:60px}.icons{grid-template-columns:repeat(3,1fr);gap:9px;margin-top:15px}.icon{font-size:10px;padding:3px}.icon svg{height:29px}.w3,.w4,.pill,.star,.note{display:none}.w5{bottom:10%;left:6%;font-size:34px}.w6{bottom:10%;right:5%;font-size:36px}.word small{font-size:9px;margin-top:8px}.chin{height:46px}.sticker{right:3px;bottom:77px;font-size:11px;padding:7px}.label{left:0;bottom:76px;font-size:10px}.caption{font-size:9px}.bottomline{font-size:8px;letter-spacing:0;bottom:16px}.window{inset:39px 9px 36px}.content{padding:16px 13px;font-size:12px}.content h2{font-size:21px}.menubar{gap:12px;font-size:10px}.contactrow{font-size:11px}.action{padding:5px 8px;font-size:11px}}
+
+/* Compact layouts keep all seven resume entries inside the screen. */
+@media(max-width:760px){.w1{font-size:37px;top:9%;max-width:48%}.w2{font-size:34px;top:10%;max-width:44%}.w1 small,.w2 small{display:none}.computer{top:46%}.screen{height:410px}.sticker,.label{display:none}.w5,.w6{bottom:9%;font-size:30px}.caption{letter-spacing:1px}.welcome p{font-size:9px}.icons{gap:7px;margin-top:12px}}
+
+.label{left:23%;bottom:19px}.sticker{right:28%;bottom:12px;font-size:12px;padding:7px 10px}
+@media(max-width:760px){.icons{grid-template-columns:repeat(3,minmax(0,1fr));gap:7px 2px}.icon{font-size:9px;gap:4px}.icon svg{height:25px}.welcome{padding:10px}.welcome h1{font-size:21px}.desktop{padding:10px}.icon span{min-height:24px}}
+/* Blue Notes — a personal desktop, in cobalt and paper blue. */
+:root{--ink:#1643bc;--paper:#edf3ff;--blue:#154de8;--lime:#b7d2ff;--navy:#123282;--silver:#dce4ef}
+body{background:var(--paper);color:var(--ink)}
+.poster{background-image:radial-gradient(#2254b020 .7px,transparent .7px);background-size:6px 6px}
+.poster:before{content:'';position:absolute;inset:15px;border:1px solid #2454ba14;pointer-events:none}
+.topline{letter-spacing:1.6px;color:#2451ad}.brand{font-size:19px;letter-spacing:-2px}.bottomline{border-color:#2556b54a;color:#3057a9}.edition{display:flex;align-items:center;gap:22px}.edition-label{font-size:10px}
+#sound-toggle{border:1px solid #7190c7;background:#e7effd;box-shadow:inset 1px 1px #fff,inset -1px -1px #adbfdf;padding:6px 9px;font:10px 'Courier New',monospace;color:#19449d;display:inline-flex;align-items:center;gap:7px}
+#sound-toggle:before{content:'♪';font-size:15px;line-height:10px}#sound-toggle[aria-pressed=false]:before{content:'×'}
+.scribble{opacity:.45}.scribble g[stroke]{stroke:#3564c9;stroke-width:1.7}.scribble g[fill]:not([fill="none"]){fill:#3564c9}
+.word{color:var(--ink);text-shadow:0 1px #fff5;isolation:isolate;will-change:translate}.word small{color:#3e5e9b;font-family:'Courier New','PingFang SC',monospace;font-size:11px;letter-spacing:1.6px;text-shadow:none;line-height:1.6}.word:hover{filter:none;color:#0c36a9}.outline{-webkit-text-stroke:1.7px #2355bf;color:var(--paper)}
+.w1{left:4.4%;top:15%;font-size:clamp(72px,6.7vw,128px);letter-spacing:-8px;transform:rotate(-6deg);line-height:.83}
+.w2{right:4.3%;top:15%;font-size:clamp(66px,6.4vw,122px);letter-spacing:-4px;transform:rotate(5deg)}
+.w3{left:4.4%;top:49%;font-size:clamp(40px,4.1vw,79px);transform:rotate(-5deg)}
+.w4{right:3.9%;top:51%;font-size:clamp(40px,3.8vw,73px);transform:rotate(5deg)}
+.w5{left:5.6%;bottom:15%;font-size:clamp(40px,3.7vw,71px);letter-spacing:-4px}.w6{right:4.4%;bottom:13%;font-size:clamp(44px,4.3vw,82px)}
+.pill{left:9%;top:39%;background:#2d61eb;color:white;border:3px solid white;box-shadow:3px 4px 0 #1543ad;font-size:17px;letter-spacing:.5px;padding:13px 21px;z-index:4;transform:rotate(-9deg)}
+.note{left:28%;bottom:7.5%;font-size:16px;color:#5375b7;transform:rotate(-5deg)}
+.star{display:none}
+.computer{width:min(49vw,900px);top:51%;transform:translate(-50%,-46%)}
+.case{background:linear-gradient(115deg,#f5f5ed,#e3e6e4 48%,#c6ced2);border-color:#b0bdcb;box-shadow:inset 5px 5px 4px #fff9,inset -7px -7px 8px #74879844,12px 19px 0 #1643bc0b,0 25px 38px #18326c1a}
+.bezel{background:#83909a;box-shadow:inset 7px 8px 9px #37495a,inset -5px -5px 5px #f8fcff,0 2px 0 #fff9}
+.screen{color:#122b5b;background:#3869c7;border-color:#293e55;box-shadow:inset 0 0 30px #18385e44}
+.screen:after{background:repeating-linear-gradient(transparent 0px,transparent 3px,#0c2d6a06 3px,#0c2d6a06 4px)}
+.menubar{background:#e1e6ef;border-bottom:2px solid #7b8cab;box-shadow:inset 0 1px white;font-size:11px;color:#16356f}
+.menubar button:hover{background:#b9cce8;filter:none}.menubar button:active{box-shadow:inset 1px 1px #617ba1}
+.desktop{background-color:#3869c7;background-image:radial-gradient(#a0c8ff46 .7px,transparent .7px);background-size:4px 4px}
+.welcome{position:relative;border:2px solid #f5f9ff;border-right-color:#7f96bb;border-bottom-color:#7f96bb;box-shadow:3px 3px 0 #153478;outline:1px solid #173e8e;background:#eaf0f9;padding:40px 20px 18px;gap:17px}
+.welcome:before{content:'▤  PROFILE.TXT';position:absolute;top:2px;left:2px;right:2px;background:#123fbe;color:white;font:10px 'Courier New',monospace;letter-spacing:1px;padding:5px 8px;height:21px;box-sizing:border-box}
+.welcome:after{content:'—  ▫';position:absolute;right:8px;top:6px;font:10px monospace;color:#fff}
+.welcome h1{color:#133c8a;letter-spacing:-1px;font-size:28px}.welcome p{color:#3f567a}.eyebrow{color:#597aa8;font-size:9px;letter-spacing:1.5px}.avatar{background:#cedff3;box-shadow:3px 3px 0 #8ba9d3;padding:5px}
+.avatar path:nth-child(1),.avatar path:nth-child(3){fill:#152e62}.avatar path:nth-child(4){fill:#f6fbff}.avatar path:nth-child(5){fill:#3b70d5}
+.icon{color:#fff;text-shadow:1px 1px #163f86;font-size:12px;padding:7px 0;border-radius:0}.icon svg{filter:drop-shadow(2px 2px 0 #163a8277)}.icon:hover,.icon:focus-visible{background:#aecaff33;border:1px dotted #e1edff}.icon.visited:after{color:#123c91;background:#d9e8ff;text-shadow:none;border:1px solid #fff}
+.status{background:#e0e7f1;border-top:2px solid #f9fbff;box-shadow:inset 0 1px #98acd0;color:#355680}.window{background:#eaf0f8;border-color:#eff6ff #718bb4 #718bb4 #eff6ff;outline:1px solid #18397c;box-shadow:5px 5px 0 #15357e88}.titlebar{background:#123fbe;color:white}.close{color:#17396d;background:#dde6f2;border-color:#fff #7086a7 #7086a7 #fff}.content{color:#1b335c;scrollbar-color:#8ca6cf #e4eaf3}.content h2{color:#143b89}.content .sub{color:#6781a5}.content h3{color:#204d98}.tags span{background:#dde8fb;border-color:#98b1d8;color:#234985}.row{border-color:#a7b8d1}.row small{color:#576f92}.highlight{background:#d5e4ff;border-left-color:#3669d8}.action{color:#193f89;background:#dbe5f5;border-color:#fff #7791b6 #7791b6 #fff}.windowfoot{border-color:#b4c3da;background:#dbe5f2}.windowfoot button:hover{background:#c1d3ee}.toast{background:#123fbe;color:white;box-shadow:2px 2px #132f69;border:1px solid #a9c3ff}.sleep{background:#103788;color:#e1eeff}.sleep .action{color:#163a84}
+.model{color:#6b7a8a}.controls{gap:13px}.led{background:#417ce8;box-shadow:0 0 3px #417ce8}.power{background:#dfe5e7;border-color:#a2b2bd;box-shadow:inset 2px 2px 2px white,2px 2px 3px #a6b6c2;color:#4b6987}.vents{background:repeating-linear-gradient(90deg,#8796a5 0,#8796a5 2px,transparent 2px,transparent 5px)}
+.neck{background:linear-gradient(#80929e,#d5dee4);border-color:#a5b5c4}.base{background:linear-gradient(#edf3f6,#b1c1ce);border-color:#a5b5c4;box-shadow:9px 10px 12px #1239801a}.label{background:#c4dcff;color:#204ca6;box-shadow:1px 2px 0 #466593}.sticker{background:#3267df;color:white;box-shadow:2px 3px 0 #1b3b83}.caption{color:#4068ac;font-size:10px;letter-spacing:2.5px}
+.retro-object{position:absolute;z-index:4;border:0;padding:0;background:none;text-align:left;will-change:translate;filter:drop-shadow(4px 5px 0 #1643bc14);color:#143e98}.retro-object:hover{filter:drop-shadow(4px 5px 0 #1643bc24)}
+.pixel-art{display:block;shape-rendering:crispEdges;overflow:visible;image-rendering:pixelated}.object-caption{font:10px 'Courier New',monospace;letter-spacing:1px;display:block;text-align:center;margin-top:8px;color:#315593}
+.obj-folder{left:20.3%;top:36.5%;width:88px;transform:rotate(12deg)}.obj-folder svg{width:88px;height:76px}
+.obj-cursor{right:8.2%;top:38%;width:67px;transform:rotate(-11deg)}.obj-cursor svg{width:67px;height:79px}
+.obj-disc{left:20%;bottom:15%;width:92px;transform:rotate(-16deg)}.obj-disc svg{width:92px;height:92px}
+.obj-alert{right:16%;bottom:27%;width:132px;transform:rotate(-10deg)}
+.mini-window{border:2px solid #fff;border-right-color:#728aad;border-bottom-color:#728aad;outline:1px solid #46648f;background:#dce5f2;padding:3px;box-shadow:3px 3px 0 #19438122}
+.mini-title{background:#1648c5;color:#fff;font:9px monospace;display:flex;justify-content:space-between;padding:4px 5px}.mini-title b{background:#dce7f6;color:#284777;font-size:10px;line-height:10px;width:10px;text-align:center}.mini-body{display:flex;align-items:center;justify-content:center;gap:8px;padding:11px 4px 9px;font:10px monospace;line-height:1.5}.mini-body svg{width:28px;height:32px}.mini-ok{display:block;width:45px;text-align:center;margin:0 auto 7px;background:#e9f0fa;border:2px solid #fff;border-right-color:#8ba0bf;border-bottom-color:#8ba0bf;font:10px monospace;line-height:16px;outline:1px dotted #42618f;outline-offset:-5px}
+.mouse-note{position:absolute;left:4.8%;bottom:8.6%;display:flex;align-items:center;gap:8px;font:9px monospace;letter-spacing:1.1px;color:#5576b3}.mouse-note svg{width:12px;height:17px}
+button:focus-visible,a:focus-visible{outline:3px solid #477ffa;outline-offset:4px}.screen button:focus-visible,.screen a:focus-visible{outline:2px dotted currentColor;outline-offset:2px}
+.screen button:active,.action:active{translate:1px 1px}
+@media(min-width:1700px){.welcome{padding:45px 22px 20px}.welcome:before{font-size:11px;height:23px}.welcome h1{font-size:29px}.welcome p{font-size:13px}.icon{font-size:13px}.icons{gap:15px;margin-top:21px}.icon svg{width:46px;height:40px}}
+@media(max-width:1500px) and (min-width:761px){.w1{font-size:7vw;letter-spacing:-6px}.w2{font-size:6.2vw;letter-spacing:-3px}.w3{font-size:4.1vw}.w4{font-size:3.9vw}.w5{font-size:3.7vw}.word small{font-size:9px;letter-spacing:.7px}.pill{font-size:13px;padding:10px 16px;left:8%}.obj-folder{width:65px;left:20%;top:39%}.obj-folder svg{width:65px;height:60px}.obj-disc{width:68px;left:19%;bottom:15%}.obj-disc svg{width:68px;height:68px}.obj-alert{width:112px;right:14%;bottom:28%}.object-caption{font-size:8px}.note{bottom:7%;font-size:13px}.welcome{padding:37px 16px 15px}.welcome h1{font-size:25px}.welcome p{font-size:11px}.icon{font-size:11px}.icons{gap:10px 5px;margin-top:16px}}
+@media(max-width:1150px) and (min-width:761px){.computer{width:61vw}.w1{top:11%;left:3%;font-size:7vw}.w2{top:11%;right:3%;font-size:6.5vw}.w3{left:2%;font-size:3.7vw}.w4{right:1%;font-size:3.6vw}.pill{left:2%;top:35%;font-size:11px}.obj-folder,.obj-alert,.obj-disc{display:none}.obj-cursor{right:5%;width:48px}.obj-cursor svg{width:48px;height:60px}.note{left:25%}.word small{font-size:8px}.w5{left:3%}.w6{right:3%}}
+@media(max-width:760px){.topline{font-size:7px;gap:10px;letter-spacing:.7px;right:5%;left:5%}.brand{font-size:16px}.topline .edition{display:flex}.edition-label{display:none}#sound-toggle{font-size:8px;padding:5px;gap:3px}#sound-toggle:before{font-size:11px}.topline>span:nth-child(2){font-size:6px;letter-spacing:.5px}.w1{left:5%;top:9.5%;font-size:40px;letter-spacing:-2px;line-height:.82}.w2{right:5%;top:10%;font-size:34px;letter-spacing:-1px}.w5{bottom:9%;left:6%;font-size:30px;letter-spacing:-2px}.w6{bottom:9%;right:5%;font-size:30px;letter-spacing:-2px}.word small{font-size:8px;letter-spacing:0}.computer{width:94%;top:46%;transform:translate(-50%,-43%)}.welcome{padding:33px 10px 12px;gap:10px}.welcome:before{font-size:9px;height:20px}.welcome:after{font-size:9px}.welcome h1{font-size:21px}.welcome p{font-size:9px}.eyebrow{font-size:8px;letter-spacing:.6px}.avatar{width:43px;height:53px;padding:3px}.icons{margin-top:11px;gap:7px 2px}.icon{font-size:9px;gap:4px;padding:3px 0}.icon svg{height:25px;width:33px}.desktop{padding:10px}.screen{height:425px}.menubar{font-size:10px;gap:11px}.retro-object{display:none}.note,.mouse-note{display:none}.caption{font-size:8px;letter-spacing:1px}.bottomline{font-size:7px}.welcome h1{letter-spacing:-1px}}
+@media(prefers-reduced-motion:reduce){[data-bounce]{animation:none!important;transition:none!important}}
+
+
+.obj-disc{left:18%;bottom:26%}
+@media(max-width:1500px) and (min-width:1151px){.obj-disc{left:19%;bottom:27%}}
+@media(max-width:760px){.caption{font-size:0;letter-spacing:0}.caption:after{content:'ORION OS / PERSONAL RESUME';font:8px monospace;letter-spacing:1px}.w5,.w6{bottom:8%}}
+</style></head><body><main class="poster">
+<header class="topline"><span class="brand">O / Z™</span><span>PERSONAL COMPUTER · INTERACTIVE RESUME</span><span class="edition"><span class="edition-label">RESUME / 张城宇</span><button id="sound-toggle" type="button" aria-pressed="true" aria-label="关闭点击音效"><span data-sound-label>SOUND ON</span></button></span></header>
+<svg class="scribble" viewBox="0 0 1920 1080" preserveAspectRatio="none" aria-hidden="true"><g fill="none" stroke="#282820" stroke-width="2.3" stroke-linecap="round"><path d="M20 350C-10 140 170 10 236 89S227 287 295 268 315 21 410 58 423 248 495 214 511 19 600 67 602 267 700 201 718 33 807 82 849 245 900 169"/><path d="M1170 189C1130 14 1290 54 1340 150S1320 285 1395 232 1450 7 1580 65 1630 242 1750 170 1940 179 1890 360"/><path d="M100 553C-40 680 254 540 179 697S60 939 275 944C449 948 387 846 311 866S310 1044 564 1007"/><path d="M1704 454C1844 374 1830 591 1710 650S1810 694 1860 791 1740 943 1652 925 1606 1039 1830 1005"/><path d="M391 717Q560 765 493 898M1505 780Q1350 924 1450 962"/></g><g fill="#25251f"><path d="M483 879l9 22 16-19-14 7z"/><path d="M1677 452l28-3-13 19 3-14z"/></g></svg>
+<button data-bounce class="word w1" data-open="about">HELLO,<br>ORION.<small>张城宇 / 一个保持好奇的设计者</small></button>
+<button data-bounce class="word w2" data-open="fit">AI AGENT<br><span class="outline">× DESIGN</span><small>AI AGENT / AIGC / INTERACTION</small></button>
+<button data-bounce class="pill" data-open="objective">STAY CURIOUS ↗</button>
+<svg class="star" viewBox="0 0 100 100" aria-hidden="true"><path fill="#254dee" stroke="#fff" stroke-width="6" d="M50 4L60 33 87 14 72 43 98 52 70 61 83 88 56 72 43 98 37 68 7 80 25 55 3 38 33 37Z"/><path d="M37 49h5m15 0h5M40 60q10 12 20-1" fill="none" stroke="white" stroke-width="4"/></svg>
+<button data-bounce class="word w3" data-open="skills">VISUAL<br><span>thinking.</span><small>视觉传达 / UX DESIGN / AIGC</small></button>
+<button data-bounce class="word w4" data-open="projects">MAKE<br>IT <span class="outline">REAL.</span><small>创意 → 项目经历 → AWARDS</small></button>
+<button data-bounce class="word w5" data-open="education">学无止境<span style="color:#254dee">*</span><small>LEARN. EXPLORE. CREATE.</small></button>
+<button data-bounce class="word w6" data-open="contact">LET’S<br>TALK ↗<small>连接想法，让设计发生。</small></button><span class="note">small pixels. big possibilities.</span>
+<button class="retro-object obj-folder" data-bounce data-open="skills" aria-label="打开技能工具箱">
+<svg class="pixel-art" viewBox="0 0 44 38" aria-hidden="true"><path fill="#113478" d="M3 4h15v3h21v5h3v21H1V8h2z"/><path fill="#d5e9ff" d="M5 6h11v3h21v5H3v-4h2z"/><path fill="#82b6ef" d="M3 14h37v17H3z"/><path fill="#eef8ff" d="M3 14h37v3H3zM3 17h3v14H3z"/><path fill="#4f87d4" d="M37 17h3v14H6v-3h31z"/><path fill="#1648b5" d="M13 21h14v2H13zm0 4h9v2h-9z"/><path fill="#fff" d="M6 7h8v1H6z"/></svg><span class="object-caption">SKILLS.DIR</span></button>
+<button class="retro-object obj-cursor" data-bounce data-open="fit" aria-label="查看岗位匹配">
+<svg class="pixel-art" viewBox="0 0 32 38" aria-hidden="true"><path fill="#103379" d="M3 1h3v3h3v3h3v3h3v3h3v3h3v3h3v3h3v3H17l6 10-6 3-7-11-7 7z"/><path fill="#fff" d="M6 6v21l5-6h10L6 6z"/><path fill="#a6cbfa" d="M12 24h3l6 10-3 1z"/></svg><span class="object-caption">CLICK ME!</span></button>
+<button class="retro-object obj-disc" data-bounce data-open="projects" aria-label="查看竞赛与获奖">
+<svg class="pixel-art" viewBox="0 0 44 44" aria-hidden="true"><path fill="#193b82" d="M14 1h16v3h6v4h4v6h3v16h-3v6h-4v4h-6v3H14v-3H8v-4H4v-6H1V14h3V8h4V4h6z"/><path fill="#d5e9ff" d="M14 4h16v3h6v7h4v16h-4v6h-6v4H14v-4H8v-6H4V14h4V8h6z"/><path fill="#8ebceb" d="M5 18h12v8H5zm21 8h12v6h-4v4h-8zM10 8h7v10H8v-4z"/><path fill="#fff" d="M22 4h7v14h-7zm-9 23h7v13h-7z"/><path fill="#6b97d9" d="M29 8h5v10h-7zM6 30h7v6H8z"/><path fill="#23487c" d="M18 16h8v3h3v7h-3v3h-8v-3h-3v-7h3z"/><path fill="#f0f7ff" d="M19 19h6v6h-6z"/></svg><span class="object-caption">WORKS / VOL.01</span></button>
+<button class="retro-object obj-alert" data-bounce data-open="objective" aria-label="查看求职意向"><div class="mini-window"><span class="mini-title">NEXT_CHAPTER <b>×</b></span><span class="mini-body"><svg class="pixel-art" viewBox="0 0 20 24" aria-hidden="true"><path fill="#174eae" d="M5 1h10v3h3v12h-3v4H5v-4H2V4h3zM7 21h6v2H7z"/><path fill="#c6e1ff" d="M6 4h8v2h2v8h-3v4H7v-4H4V6h2z"/><path fill="#fff" d="M6 6h3v6H6z"/></svg><span>GOOD IDEAS<br>START HERE.</span></span><span class="mini-ok">OK ↵</span></div></button>
+<div class="mouse-note"><svg viewBox="0 0 12 18" aria-hidden="true"><rect x="1" y="1" width="10" height="16" rx="5" fill="none" stroke="currentColor"/><path d="M6 2v5" stroke="currentColor"/></svg>碰一碰，灵感会弹开。 / HOVER & PLAY</div>
+
+<section class="computer" aria-label="Orion 的互动简历电脑"><div class="case"><div class="bezel"><div class="screen"><nav class="menubar"><button id="home" aria-label="返回桌面">▦ Orion OS</button><button data-open="about">File</button><button id="explore">Explore</button><time id="clock">09:41</time></nav><div class="desktop"><div class="welcome"><svg class="avatar" viewBox="0 0 20 20" shape-rendering="crispEdges" aria-hidden="true"><path fill="#354630" d="M6 1h8v1h2v3h1v8h-3v2h3v2h2v3H1v-3h2v-2h3v-2H3V5h1V2h2z"/><path fill="#e9c69b" d="M6 5h8v1h2v6h-2v2H6v-2H4V6h2z"/><path fill="#263320" d="M4 6h5v4H4zm7 0h5v4h-5zM9 7h2v1H9z"/><path fill="#e8eee0" d="M5 7h2v1H5zm7 0h2v1h-2zM6 15h8v5H6z"/><path fill="#6c8453" d="M3 16h3v4H3zm11 0h3v4h-3z"/><path fill="#986e50" d="M8 11h4v1H8z"/></svg><div><div class="eyebrow">PERSONAL RESUME / 个人简历</div><h1>你好，我是张城宇。</h1><p>Orion Zhang · 视觉传达设计在读<br>华东理工大学 · 专业前 10% · 专业课 4.0</p></div></div><div class="icons" id="icons"></div></div><div class="status"><span id="hint">单击图标，开始探索 ↗</span><span id="progress">EXPLORED 0 / 7</span></div><section class="window" id="window" hidden aria-label="简历详情"><div class="titlebar"><span id="windowtitle"></span><button class="close" id="close" aria-label="关闭窗口">×</button></div><div class="content" id="content" tabindex="0"></div><div class="windowfoot"><button id="prev">← PREV</button><span id="pagecount"></span><button id="next">NEXT →</button></div></section><div class="toast" id="toast" role="status"></div><div class="sleep" id="sleep" hidden><div>ORION OS<br><small>休息一下，灵感马上回来。</small></div><button class="action" id="wake">↵ 唤醒电脑</button></div></div></div><div class="chin"><span class="model">orion<small>BLUE EDITION / 02</small></span><div class="controls"><div class="vents"></div><span class="led"></span><button class="power" id="power" aria-label="休眠或唤醒电脑">⏻</button></div></div><div class="label">100% CURIOUS</div><div class="sticker">IDEAS<br>INSIDE! ✳</div></div><div class="neck"></div><div class="base"></div><div class="caption">A PERSONAL RESUME, WITH A LITTLE PERSONALITY.</div></section>
+<footer class="bottomline"><span>© ORION ZHANG · 2026</span><span>视觉传达 &nbsp; / &nbsp; 交互体验 &nbsp; / &nbsp; 创意探索</span><a class="footerlink" href="mailto:2720502923@qq.com">SAY HELLO ↗</a></footer></main>
+<script>
+const pages=[
+{id:'about',en:'About',cn:'关于我',kind:'person',html:`<div class="sub">01 / PERSONAL PROFILE</div><h2>张城宇 / Orion Zhang</h2><p>20 岁，华东理工大学艺术设计与传媒学院<br>视觉传达设计本科在读。</p><div class="tags"><span>视觉传达</span><span>UX 基础</span><span>AIGC</span><span>保持好奇</span></div><p>关注视觉设计、交互体验与 AI 应用，希望将创意表达与用户体验连接起来，让想法走向具体的设计实践。</p><div class="highlight">当前探索方向 → UX · AI Agent · AIGC · 游戏产品体验</div>`},
+{id:'education',en:'Education',cn:'教育经历',kind:'book',html:`<div class="sub">02 / LEARNING LOG</div><h2>华东理工大学</h2><p>艺术设计与传媒学院 · 视觉传达设计<br>本科在读 / 2024.09 — 至今</p><div class="highlight"><b>专业排名前 10%</b><br>专业课满绩点 4.0</div><h3>校园荣誉</h3><div class="tags"><span>优秀奖学金二等奖</span><span>校级优秀学生</span><span>社会工作奖 B 类</span></div>`},
+{id:'skills',en:'Skills',cn:'技能工具箱',kind:'tools',html:`<div class="sub">03 / TOOL INVENTORY</div><h2>创意的工具箱。</h2><h3>AI 对话与创意探索</h3><div class="tags"><span>ChatGPT</span><span>Gemini</span><span>Claude</span></div><h3>AIGC 影像生成</h3><div class="tags"><span>即梦</span><span>可灵</span></div><h3>视觉设计与视频编辑</h3><div class="tags"><span>Photoshop</span><span>Illustrator</span><span>InDesign</span><span>剪映</span></div><h3>交互体验</h3><div class="tags"><span>UX 基础</span></div>`},
+{id:'projects',en:'Projects & Awards',cn:'竞赛与获奖',kind:'trophy',html:`<div class="sub">04 / ACHIEVEMENT LOG</div><h2>创意实践，留下回响。</h2><div class="row"><b>中国品牌国际传播短视频大赛</b><small>优秀奖 · 品牌传播 / 短视频</small></div><div class="row"><b>老字号·新国潮创新设计大赛</b><small>国家级优秀奖 · 创新设计</small></div><div class="row"><b>互联网+大学生创新创业大赛</b><small>校级银奖 · 创新创业</small></div><p style="font-size:11px;color:#617aa0">竞赛获奖记录 / 校园荣誉见「教育经历」。</p>`},
+{id:'fit',en:'Position Fit',cn:'岗位匹配',kind:'target',html:`<div class="sub">05 / NEXT QUEST</div><h2>设计 × AI × 体验</h2><div class="row"><b>UX / 交互体验</b><small>以视觉传达专业背景与 UX 基础，关注信息呈现和用户体验。</small></div><div class="row"><b>AI Agent / AIGC</b><small>结合 AI 对话工具与生成式影像工具，探索具体应用场景。</small></div><div class="row"><b>游戏产品体验</b><small>关注界面表达、交互反馈与体验中的创意可能。</small></div>`},
+{id:'objective',en:'Career Objective',cn:'求职意向',kind:'flag',html:`<div class="sub">06 / A NEW CHAPTER</div><h2>让想法成为真实体验。</h2><p>求职意向聚焦于：</p><div class="row"><b>01　AI Agent 应用场景探索</b></div><div class="row"><b>02　交互体验优化</b></div><div class="row"><b>03　设计落地</b></div><div class="highlight">希望在 UX、AI Agent、AIGC 及游戏产品体验相关方向参与实践，持续学习并积累经验。</div>`},
+{id:'contact',en:'Contact',cn:'联系我',kind:'mail',html:`<div class="sub">07 / LET’S CONNECT</div><h2>下一个好想法，<br>从一句你好开始。</h2><div class="contactrow"><span>邮箱<br><b>2720502923@qq.com</b></span><button class="action" data-copy="2720502923@qq.com">复制</button></div><div class="contactrow"><span>手机<br><b>13961182372</b></span><button class="action" data-copy="13961182372">复制</button></div><div class="contactrow"><span>微信<br><b>zcy2720502923</b></span><button class="action" data-copy="zcy2720502923">复制</button></div><p><a class="action" href="mailto:2720502923@qq.com">写一封邮件 ↗</a></p>`}
+];
+const drawings={person:'<path d="M12 3h10v3h3v9h-3v3H12v-3H9V6h3zM7 22h20v8H7z"/><path fill="#e9d7ad" d="M12 7h10v7H12z"/>',book:'<path d="M3 5h12l3 3 3-3h12v23H21l-3 3-3-3H3z"/><path fill="#d6eaff" d="M6 8h9v17H6zm15 0h9v17h-9z"/>',tools:'<path d="M5 11h26v19H5zM12 5h12v6h-3V8h-6v3h-3z"/><path fill="#91bbee" d="M8 14h20v5H8zm8 3h5v7h-5z"/>',trophy:'<path d="M9 3h18v14h-3v4h-4v6h7v3H9v-3h7v-6h-4v-4H9zM3 6h6v3H6v6h6v3H6v-3H3zm24 0h6v9h-3v3h-6v-3h6V9h-3z"/><path fill="#e8d477" d="M12 6h12v10H12z"/>',target:'<path d="M9 3h18v3h3v3h3v15h-3v3h-3v3H9v-3H6v-3H3V9h3V6h3z"/><path fill="#c4def7" d="M9 9h18v15H9z"/><path d="M15 12h6v9h-6z"/>',flag:'<path d="M7 3h3v27H7zM10 4h21v14H10zM3 28h14v3H3z"/><path fill="#80b2f0" d="M13 7h15v8H13z"/>',mail:'<path d="M3 7h30v22H3z"/><path fill="#e9f3ff" d="M6 10h24v16H6z"/><path d="M6 10h3v3h3v3h3v3h6v-3h3v-3h3v-3h3v3h-3v3h-3v3h-3v3h-6v-3h-3v-3H9v-3H6z"/>'};
+const $=s=>document.querySelector(s);let current=-1,visited=new Set(),lastTrigger=null;const win=$('#window');
+$('#icons').innerHTML=pages.map(p=>`<button class="icon" data-open="${p.id}" aria-label="${p.en} ${p.cn}"><svg viewBox="0 0 36 34" fill="#123b87" aria-hidden="true">${drawings[p.kind]}</svg><span>${p.en}<br>${p.cn}</span></button>`).join('');
+function openPage(id,trigger){const i=pages.findIndex(p=>p.id===id);if(i<0)return;current=i;if(trigger)lastTrigger=trigger;const p=pages[i];$('#sleep').hidden=true;$('#windowtitle').textContent=p.en+' — '+p.cn;$('#content').innerHTML=p.html;$('#content').scrollTop=0;$('#pagecount').textContent=`FILE ${i+1} / 7`;win.hidden=false;visited.add(id);document.querySelectorAll('.icon').forEach(b=>b.classList.toggle('visited',visited.has(b.dataset.open)));$('#progress').textContent=`EXPLORED ${visited.size} / 7`;$('#hint').textContent=visited.size===7?'全部探索完成！很高兴认识你。':'已发现：'+p.cn;$('#content').focus({preventScroll:true})}
+function home(){clearTimeout(toastTimer);$('#toast').textContent='';win.hidden=true;$('#sleep').hidden=true;if(lastTrigger)lastTrigger.focus({preventScroll:true})}
+document.addEventListener('click',async e=>{const b=e.target.closest('[data-open]');if(b)openPage(b.dataset.open,b);const c=e.target.closest('[data-copy]');if(c){try{if(navigator.clipboard&&window.isSecureContext)await navigator.clipboard.writeText(c.dataset.copy);else{const t=document.createElement('textarea');t.value=c.dataset.copy;t.style.position='fixed';t.style.opacity='0';document.body.append(t);t.select();const ok=document.execCommand('copy');t.remove();if(!ok)throw Error('copy')}toast('已复制到剪贴板 ✓')}catch{toast('复制未成功，请选中联系方式手动复制')}}});
+$('#close').onclick=home;$('#home').onclick=home;$('#explore').onclick=home;$('#prev').onclick=()=>openPage(pages[(current+6)%7].id);$('#next').onclick=()=>openPage(pages[(current+1)%7].id);document.addEventListener('keydown',e=>{if(e.key==='Escape')home()});$('#power').onclick=()=>{$('#sleep').hidden=!$('#sleep').hidden;if(!$('#sleep').hidden)$('#wake').focus()};$('#wake').onclick=()=>{$('#sleep').hidden=true;$('#home').focus()};let toastTimer;function toast(s){$('#toast').textContent=s;clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('#toast').textContent='',2400)}function tick(){$('#clock').textContent=new Date().toLocaleTimeString('zh-CN',{hour:'2-digit',minute:'2-digit',hour12:false})}tick();setInterval(tick,30000);
+</script><script>
+/* Orion OS: cursor nudges and small, locally synthesized button sounds. */
+(() => {
+  'use strict';
+
+  function initializeEffects() {
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const states = new WeakMap();
+    const waitingToRearm = new Set();
+    const moving = new Set();
+    const held = new Map();
+    let frame = 0;
+    let previousFrame = 0;
+
+    function restore(state) {
+      state.x = state.y = state.vx = state.vy = 0;
+      state.element.style.translate = state.originalTranslate;
+      moving.delete(state);
+    }
+
+    function stopAll() {
+      moving.forEach(restore);
+      held.forEach(restore);
+      held.clear();
+      if (frame) cancelAnimationFrame(frame);
+      frame = 0;
+    }
+
+    function startFrames() {
+      if (!frame && moving.size) {
+        previousFrame = performance.now();
+        frame = requestAnimationFrame(update);
+      }
+    }
+
+    function update(now) {
+      frame = 0;
+      const dt = Math.min((now - previousFrame) / 1000, 0.025);
+      previousFrame = now;
+
+      moving.forEach(state => {
+        if (!state.element.isConnected || now - state.started > 1150) {
+          restore(state);
+          return;
+        }
+        // A damped spring settles at the original position after one small bounce.
+        state.vx += (-220 * state.x - 15 * state.vx) * dt;
+        state.vy += (-220 * state.y - 15 * state.vy) * dt;
+        state.x = Math.max(-40, Math.min(40, state.x + state.vx * dt));
+        state.y = Math.max(-40, Math.min(40, state.y + state.vy * dt));
+        state.element.style.translate = `${state.x.toFixed(2)}px ${state.y.toFixed(2)}px`;
+
+        if (now - state.started > 250 && Math.hypot(state.x, state.y) < 0.13 &&
+            Math.hypot(state.vx, state.vy) < 1.8) restore(state);
+      });
+      if (moving.size) frame = requestAnimationFrame(update);
+    }
+
+    function elementAt(target) {
+      return target instanceof Element ? target.closest('[data-bounce]') : null;
+    }
+
+    document.addEventListener('pointerover', event => {
+      if (event.pointerType !== 'mouse' || reducedMotion.matches || event.buttons) return;
+      const element = elementAt(event.target);
+      if (!element || element === elementAt(event.relatedTarget)) return;
+
+      let state = states.get(element);
+      if (!state) {
+        state = {
+          element, armed: true, x: 0, y: 0, vx: 0, vy: 0, started: 0,
+          originalTranslate: element.style.translate
+        };
+        states.set(element, state);
+      }
+      if (!state.armed || moving.has(state)) return;
+
+      const bounds = element.getBoundingClientRect();
+      let dx = bounds.left + bounds.width / 2 - event.clientX;
+      let dy = bounds.top + bounds.height / 2 - event.clientY;
+      if (Math.hypot(dx, dy) < 4) { dx = 1; dy = -0.5; }
+      const distance = Math.hypot(dx, dy);
+      const scale = Math.max(0.6, Math.min(1.2, Number(element.dataset.bounce) || 1));
+      state.vx = dx / distance * 720 * scale;
+      state.vy = dy / distance * 720 * scale;
+      state.started = performance.now();
+      state.armed = false;
+      waitingToRearm.add(state);
+      moving.add(state);
+      startFrames();
+    }, { passive: true });
+
+    document.addEventListener('pointermove', event => {
+      if (event.pointerType !== 'mouse' || !waitingToRearm.size) return;
+      const now = performance.now();
+      waitingToRearm.forEach(state => {
+        if (!state.element.isConnected) { waitingToRearm.delete(state); return; }
+        if (moving.has(state) || now - state.started < 950) return;
+        const bounds = state.element.getBoundingClientRect();
+        const outside = event.clientX < bounds.left - 24 || event.clientX > bounds.right + 24 ||
+          event.clientY < bounds.top - 24 || event.clientY > bounds.bottom + 24;
+        if (outside) {
+          state.armed = true;
+          waitingToRearm.delete(state);
+        }
+      });
+    }, { passive: true });
+
+    // Hold a moving button still between press and release so it remains clickable.
+    document.addEventListener('pointerdown', event => {
+      const element = elementAt(event.target);
+      const state = element && states.get(element);
+      if (!state || !moving.has(state)) return;
+      moving.delete(state);
+      state.vx = state.vy = 0;
+      held.set(event.pointerId, state);
+    }, { capture: true, passive: true });
+
+    function release(event) {
+      const state = held.get(event.pointerId);
+      if (!state) return;
+      held.delete(event.pointerId);
+      state.started = performance.now();
+      moving.add(state);
+      startFrames();
+    }
+    window.addEventListener('pointerup', release, { capture: true, passive: true });
+    window.addEventListener('pointercancel', release, { capture: true, passive: true });
+    window.addEventListener('blur', stopAll);
+    document.addEventListener('visibilitychange', () => { if (document.hidden) stopAll(); });
+    const motionChanged = () => { if (reducedMotion.matches) stopAll(); };
+    if (reducedMotion.addEventListener) reducedMotion.addEventListener('change', motionChanged);
+    else if (reducedMotion.addListener) reducedMotion.addListener(motionChanged);
+
+    const soundButton = document.getElementById('sound-toggle');
+    const preferenceKey = 'orion-resume:sound-enabled';
+    let soundEnabled = true;
+    let audioContext;
+    try { soundEnabled = localStorage.getItem(preferenceKey) !== 'false'; } catch (_) {}
+
+    function updateSoundButton() {
+      if (!soundButton) return;
+      const label = soundButton.querySelector('[data-sound-label]') || soundButton;
+      label.textContent = soundEnabled ? 'SOUND ON' : 'SOUND OFF';
+      soundButton.setAttribute('aria-pressed', String(soundEnabled));
+      soundButton.setAttribute('aria-label', soundEnabled ?
+        '点击音效已开启，点击静音' : '点击音效已关闭，点击开启声音');
+      soundButton.title = soundEnabled ? '关闭点击音效' : '开启点击音效';
+      soundButton.dataset.soundState = soundEnabled ? 'on' : 'off';
+    }
+
+    function playClick(isToggle) {
+      if (!soundEnabled) return;
+      try {
+        const AudioEngine = window.AudioContext || window.webkitAudioContext;
+        if (!AudioEngine) return;
+        // Creation and resuming happen only in a trusted user click handler.
+        if (!audioContext || audioContext.state === 'closed') audioContext = new AudioEngine();
+        if (audioContext.state !== 'running') {
+          const resume = audioContext.resume();
+          if (resume && typeof resume.catch === 'function') resume.catch(() => {});
+        }
+        const at = audioContext.currentTime;
+        const oscillator = audioContext.createOscillator();
+        const envelope = audioContext.createGain();
+        const filter = audioContext.createBiquadFilter();
+        oscillator.type = 'square';
+        oscillator.frequency.setValueAtTime(isToggle ? 1174 : 988, at);
+        oscillator.frequency.setValueAtTime(isToggle ? 1568 : 740, at + 0.016);
+        filter.type = 'lowpass';
+        filter.frequency.value = 2100;
+        filter.Q.value = 0.4;
+        envelope.gain.setValueAtTime(0.0001, at);
+        envelope.gain.exponentialRampToValueAtTime(0.032, at + 0.002);
+        envelope.gain.exponentialRampToValueAtTime(0.0001, at + 0.047);
+        oscillator.connect(filter);
+        filter.connect(envelope);
+        envelope.connect(audioContext.destination);
+        oscillator.onended = () => { oscillator.disconnect(); filter.disconnect(); envelope.disconnect(); };
+        oscillator.start(at);
+        oscillator.stop(at + 0.05);
+      } catch (_) {
+        // Audio is an enhancement: unsupported or blocked audio never interrupts navigation.
+      }
+    }
+
+    updateSoundButton();
+    document.addEventListener('click', event => {
+      if (!event.isTrusted || !(event.target instanceof Element)) return;
+      const control = event.target.closest('button, a');
+      if (!control || control.disabled || control.getAttribute('aria-disabled') === 'true') return;
+      if (control === soundButton) {
+        soundEnabled = !soundEnabled;
+        try { localStorage.setItem(preferenceKey, String(soundEnabled)); } catch (_) {}
+        updateSoundButton();
+        playClick(true);
+      } else playClick(false);
+    }, { capture: true });
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initializeEffects, { once: true });
+  else initializeEffects();
+})();
+
+</script></body></html>
